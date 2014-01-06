@@ -1,0 +1,12 @@
+Grunt-init template for generating node/browser commonjs projects
+
+Instructions:
+
+```sh
+npm install -g grunt-init
+git clone git://github.com/tarruda/grunt-init-node-browser-commonjs ~/.grunt-init/node-browser-commonjs
+mkdir project_name
+cd project_name
+grunt-init node-browser-commonjs
+npm install
+```

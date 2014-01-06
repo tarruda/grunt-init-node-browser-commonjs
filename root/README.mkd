@@ -1,0 +1,16 @@
+# {%= name %}
+
+#### {%= description %}
+
+####Build status
+[![Build Status](https://travis-ci.org/{%= username %}/{%= name %}.png)](https://travis-ci.org/{%= username %}/{%= name %})
+
+####Browser support
+[![browser support](https://ci.testling.com/{%= username %}/{%= name %}.png)](https://ci.testling.com/{%= username %}/{%= name %})
+
+
+## Installation
+
+```sh
+npm install --save {%= name %}
+```
