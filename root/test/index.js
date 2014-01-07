@@ -1,7 +1,7 @@
 var assert = require('assert');
 
 
-describe('__name__', function() {
+describe('{%= name %}', function() {
   it('is true!', function() {
     assert(require('../index'));
   });
