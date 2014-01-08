@@ -105,13 +105,12 @@ exports.template = (grunt, init, done) ->
           'opera/12'
           'safari/5.1'
         ]
-        preprocess:
-          command: 'bash',
-          args: [
-            '-c',
-            'browserify test/*.js | cat node_modules/json3/lib/json3.js node_modules/es5-shim/es5-sh{im,am}.js -'
-          ]
         harness: 'mocha'
+        scripts: [
+          'node_modules/json3/lib/json3.js',
+          'node_modules/es5-shim/es5-shim.js',
+          'node_modules/es5-shim/es5-sham.js'
+        ],
         files: 'test/*.js'
 
       return pkg
