@@ -89,24 +89,30 @@ exports.template = (grunt, init, done) ->
         'nodemon': '1.0.1'
         'testling': '~1.5.6',
         'browserify': '~3.19.0'
-
-      pkg.engines = node: '>= 0.8.0'
+        'es5-shim': '~2.3.0',
+        'json3': '~3.2.6'
 
       pkg.scripts = test: 'make test && ./node_modules/.bin/testling'
 
       pkg.testling =
         browsers: [
-          "ie6"
-          "ie7"
-          "ie8"
-          "ie9"
-          "firefox/15"
-          "chrome/22"
-          "opera/12"
-          "safari/5.1"
+          'ie6'
+          'ie7'
+          'ie8'
+          'ie9'
+          'firefox/15'
+          'chrome/22'
+          'opera/12'
+          'safari/5.1'
         ]
-        harness: "mocha"
-        files: "test/*.js"
+        preprocess:
+          command: 'bash',
+          args: [
+            '-c',
+            'browserify test/*.js | cat node_modules/json3/lib/json3.js node_modules/es5-shim/es5-sh{im,am}.js -'
+          ]
+        harness: 'mocha'
+        files: 'test/*.js'
 
       return pkg
     ))
