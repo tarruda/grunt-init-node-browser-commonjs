@@ -92,7 +92,7 @@ exports.template = (grunt, init, done) ->
         'es5-shim': '~2.3.0',
         'json3': '~3.2.6'
 
-      pkg.scripts = test: 'make test && ./node_modules/.bin/testling'
+      pkg.scripts = test: 'make test'
 
       pkg.testling =
         browsers: [
