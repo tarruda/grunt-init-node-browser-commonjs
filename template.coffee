@@ -25,6 +25,7 @@ toBoolean = (answer) -> answer == 'Y/n' or /^y$/i.test(answer)
 
 
 jshintDefaults =
+  es3: true
   curly: false
   eqeqeq: true
   immed: true
@@ -86,7 +87,7 @@ exports.template = (grunt, init, done) ->
 
       pkg.devDependencies =
         'mocha': '~1.16.2'
-        'nodemon': '1.0.1'
+        'nodemon': '1.0.7'
         'testling': '~1.5.6',
         'browserify': '~3.19.0'
         'es5-shim': '~2.3.0',
