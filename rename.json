@@ -1,3 +1,4 @@
 {
-  "*~": false
+  "**/*~": false,
+  "**/*.sw{p,o,n,m}": false
 }

@@ -59,6 +59,16 @@ exports.template = (grunt, init, done) ->
     init.prompt('author_email')
     init.prompt('author_url')
     {
+      name: 'coffeescript'
+      message: 'Is this a coffeescript project?'
+      default: 'y/N'
+      warning: 'Answer y/n'
+      validator: isBoolean
+      sanitize: (value, data, done) ->
+        data.coffeescript = toBoolean(value)
+        done()
+    }
+    {
       name: 'isPrivate'
       message: 'Is this a private project?'
       default: 'y/N'
@@ -72,12 +82,20 @@ exports.template = (grunt, init, done) ->
 
     props.username = process.env['USER']
     files = init.filesToCopy(props)
+
+    if props.coffeescript
+      files['index.coffee'] = files['index.js']
+      delete files['index.js']
+      files['test/index.coffee'] = files['test/index.js']
+      delete files['test/index.js']
+
     init.addLicenseFiles(files, props.licenses)
     init.copyAndProcess(files, props)
 
-    grunt.file.write('.jshintrc', JSON.stringify(jshintDefaults, null, 2))
-    grunt.file.write('test/.jshintrc',
-      JSON.stringify(jshintTestDefaults, null, 2))
+    if not props.coffeescript
+      grunt.file.write('.jshintrc', JSON.stringify(jshintDefaults, null, 2))
+      grunt.file.write('test/.jshintrc',
+        JSON.stringify(jshintTestDefaults, null, 2))
 
     init.writePackageJSON('package.json', props, (pkg) =>
       pkg.main = './index'
@@ -90,6 +108,9 @@ exports.template = (grunt, init, done) ->
         'nodemon': '^1.3.7'
         'testling': '^1.7.1'
         'browserify': '^10.2.0'
+
+      if props.coffeescript
+        pkg.devDependencies['coffee-script'] = '^1.9.2'
 
       pkg.scripts = test: 'make test'
 
