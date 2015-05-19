@@ -86,10 +86,10 @@ exports.template = (grunt, init, done) ->
         pkg.private = true
 
       pkg.devDependencies =
-        'mocha': '~1.16.2'
-        'nodemon': '1.0.7'
-        'testling': '~1.5.6',
-        'browserify': '~3.19.0'
+        'mocha': '^2.2.5'
+        'nodemon': '^1.3.7'
+        'testling': '^1.7.1'
+        'browserify': '^10.2.0'
 
       pkg.scripts = test: 'make test'
 
